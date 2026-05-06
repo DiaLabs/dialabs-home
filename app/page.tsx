@@ -1,65 +1,121 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Meteors } from "@/components/ui/meteors";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex flex-col">
+      {/* Hero Section */}
+      <section className="relative flex-1 flex items-center justify-center pt-40 pb-20 px-6 overflow-hidden bg-black min-h-screen">
+        {/* Meteors Background - Positioned absolutely */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Meteors number={50} />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Decorative dotted border background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <div className="absolute w-full max-w-4xl h-96 border border-dashed border-white/10" />
         </div>
-      </main>
+
+        <div className="max-w-3xl w-full text-center relative z-[10]">
+          {/* Main Heading */}
+          <div
+            className={`mb-8 transition-all duration-1000 ${
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
+              Welcome to
+              <br />
+              DiaLabs.
+            </h1>
+          </div>
+
+          {/* Description */}
+          <div
+            className={`mb-12 transition-all duration-1000 delay-100 ${
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <p className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
+              We are a collective of ML students building open-source products
+              that solve real world problems with AI, privacy and purpose.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-200 ${
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <Link
+              href="#projects"
+              className="px-6 py-3 bg-white text-black font-medium text-center transition-all duration-300 hover:bg-gray-100 active:bg-gray-90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+            >
+              Explore Our Projects
+            </Link>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 border border-white/30 text-white font-medium text-center transition-all duration-300 hover:bg-white/5 hover:border-white/60 active:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.603-3.369-1.343-3.369-1.343-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.544 2.914 1.186.092-.923.35-1.544.636-1.898-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.274.098-2.654 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.817c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.38.203 2.401.1 2.654.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.194 20 14.44 20 10.017 20 4.484 15.522 0 10 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Star Us on GitHub
+            </a>
+          </div>
+
+          {/* Badge/Tags */}
+          <div
+            className={`mt-16 flex flex-wrap gap-4 justify-center text-sm transition-all duration-1000 delay-300 ${
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="flex items-center gap-2 text-gray-500">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V9.5m-11-4h8m-8 3h5" stroke="currentColor" fill="none" strokeWidth="1.5" />
+              </svg>
+              Open Source
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 6h2v5H9V6zm0 6h2v2H9v-2z" />
+              </svg>
+              ML Students
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.5 1.5L3 5.5v5c0 3.86 2.29 7.24 5.5 8.83 3.21-1.59 5.5-4.97 5.5-8.83v-5l-3-3.5z" />
+              </svg>
+              Building in Public
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
