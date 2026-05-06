@@ -20,6 +20,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DiaLabs",
   description: "ML Students building AI products that solve real world problems",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("antialiased", "scroll-smooth", geistSans.variable, geistMono.variable, "font-sans", figtree.variable)}
+      className={cn("dark antialiased", "scroll-smooth", geistSans.variable, geistMono.variable, "font-sans", figtree.variable)}
       suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">

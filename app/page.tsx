@@ -50,8 +50,7 @@ export default function Home() {
             }`}
           >
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              We are a collective of ML students building open-source products
-              that solve real world problems with AI, privacy and purpose.
+              Thoughtfully designed products combining AI, privacy, and modern engineering into tools built for practical use.
             </p>
           </div>
 
@@ -65,15 +64,16 @@ export default function Home() {
           >
             <Link
               href="#projects"
-              className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-medium text-center transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 active:bg-gray-900 dark:active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
+              className="group px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-medium flex items-center justify-center gap-2 transition-all duration-150 hover:scale-105 hover:bg-gray-800 dark:hover:bg-gray-100 active:bg-gray-900 dark:active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
             >
-              Explore Our Projects
+              <span>Explore Our Projects</span>
+              <span className="inline-block group-hover:animate-arrow-zoom">→</span>
             </Link>
             <a
-              href="https://github.com"
+              href="https://github.com/dialabs"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border-2 border-black dark:border-white/30 text-black dark:text-white font-medium text-center transition-all duration-300 hover:bg-black/5 dark:hover:bg-white/5 hover:border-black dark:hover:border-white/60 active:bg-black/10 dark:active:bg-white/10 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black flex items-center justify-center gap-2"
+              className="group px-6 py-3 border-2 border-black dark:border-white/30 text-black dark:text-white font-medium transition-all duration-150 hover:scale-105 hover:bg-black/5 dark:hover:bg-white/5 hover:border-black dark:hover:border-white/60 active:bg-black/10 dark:active:bg-white/10 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -82,7 +82,8 @@ export default function Home() {
                   clipRule="evenodd"
                 />
               </svg>
-              Star Us on GitHub
+              <span>Star Us on GitHub</span>
+              <span className="inline-block">★</span>
             </a>
           </div>
 
@@ -100,12 +101,7 @@ export default function Home() {
               </svg>
               Open Source
             </div>
-            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-500">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 6h2v5H9V6zm0 6h2v2H9v-2z" />
-              </svg>
-              ML Students
-            </div>
+            
             <div className="flex items-center gap-2 text-gray-700 dark:text-gray-500">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10.5 1.5L3 5.5v5c0 3.86 2.29 7.24 5.5 8.83 3.21-1.59 5.5-4.97 5.5-8.83v-5l-3-3.5z" />
