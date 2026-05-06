@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const handler = () => {
@@ -15,76 +15,53 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark");
-  };
-
   return (
-    <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled ? "border-b border-white/10 bg-black/95 backdrop-blur-sm" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        <div className="flex items-center justify-between gap-8">
+    <nav className="relative">
+      <div className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center">
+        <div className="max-w-7xl w-full mx-auto px-3 md:px-6 py-2 md:py-4">
+          <div className={`border-2 border-dashed border-black/20 dark:border-white/30 hover:border-black/40 dark:hover:border-white/60 transition-all duration-300 px-3 md:px-6 py-2 md:py-3 flex items-center justify-between gap-2 md:gap-0 ${
+            scrolled ? "bg-white/95 dark:bg-black/95 backdrop-blur-xs" : ""
+          }`}>
           {/* Left Section - Logo */}
-          <div className="border-2 border-dashed border-white/30 px-6 py-3 hover:border-white/60 transition-colors duration-300">
-            <Link href="/" className="text-xl font-semibold tracking-tight hover:opacity-75 transition-opacity duration-200">
-              DiaLabs
+          <Link href="/" className="text-lg md:text-xl font-semibold tracking-tight text-black dark:text-white hover:opacity-75 transition-opacity duration-200">
+            DiaLabs
+          </Link>
+
+          {/* Center Section - Navigation */}
+          <div className="hidden md:flex gap-6 lg:gap-12 flex-1 justify-center">
+            <Link
+              href="#who-we-are"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+            >
+              Who We Are
+            </Link>
+            <Link
+              href="#what-we-do"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+            >
+              What We Do
+            </Link>
+            <Link
+              href="#get-involved"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+            >
+              Get Involved
             </Link>
           </div>
 
-          {/* Center Section - Navigation */}
-          <div className="border-2 border-dashed border-white/30 px-8 py-3 hover:border-white/60 transition-colors duration-300">
-            <div className="flex gap-8">
-              <Link
-                href="#who-we-are"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Who We Are
-              </Link>
-              <Link
-                href="#what-we-do"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                What We Do
-              </Link>
-              <Link
-                href="#get-involved"
-                className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Get Involved
-              </Link>
+          {/* Right Section - Theme Toggle & GitHub */}
+          <div className="flex items-center gap-2 md:gap-4">
+            {/* Animated Theme Toggle - Self Contained */}
+            <div className="hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 md:px-4 py-2 md:py-3 flex items-center justify-center">
+              <AnimatedThemeToggler variant="square" className="w-5 h-5" />
             </div>
-          </div>
 
-          {/* Right Section - Theme & GitHub */}
-          <div className="border-2 border-dashed border-white/30 px-6 py-3 hover:border-white/60 transition-colors duration-300 flex items-center gap-4">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="text-white hover:opacity-75 transition-opacity duration-200 p-1"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l-2.828-2.828a2 2 0 112.828-2.828l2.828 2.828a2 2 0 11-2.828 2.828zM2.05 9.464a1 1 0 101.414-1.414l-1.414 1.414zm2.828-2.828a2 2 0 112.828-2.828L4.878 6.636a2 2 0 11-2.828 2.828zM13.586 1.586a2 2 0 112.828 2.828l-2.828-2.828zM9.464 17.95a1 1 0 101.414 1.414l-1.414-1.414zm2.828 2.828a2 2 0 112.828-2.828l-2.828 2.828zM1.586 13.586a2 2 0 112.828 2.828l-2.828 2.828z" clipRule="evenodd" />
-                </svg>
-              )}
-            </button>
-
-            {/* GitHub Link */}
+            {/* GitHub Link - Self Contained */}
             <a
-              href="https://github.com"
+              href="https://github.com/dialabs"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:opacity-75 transition-opacity duration-200 flex items-center gap-2"
+              className="hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 md:px-4 py-2 md:py-3 text-black dark:text-white flex items-center gap-2 text-xs md:text-sm"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -97,6 +74,7 @@ export default function Navbar() {
               GitHub
             </a>
           </div>
+        </div>
         </div>
       </div>
     </nav>

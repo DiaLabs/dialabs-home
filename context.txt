@@ -1,0 +1,68 @@
+Organization
+DiaLabs
+Domain: dialabs.tech
+GitHub org: github.com/dialabs
+Projects
+1. Dia Chat 🤖
+
+Privacy-first on-device AI companion/chat app
+
+Next.js 16 + React 19
+WebLLM + Transformers.js
+local-first/privacy-first
+themes/customization
+voice support
+Firebase auth
+responsive app
+
+Repo:
+
+github.com/dialabs/dia-chat
+
+Core positioning:
+
+“AI that runs with you, not on someone else’s servers.”
+
+2. Dia Moderator 🛡️
+
+Multi-platform moderation system
+
+Discord
+WhatsApp
+Telegram
+profanity + spam protection
+AI moderation + summaries
+centralized dashboard
+realtime updates
+
+Repo:
+
+github.com/dialabs/dia-mod
+
+Core positioning:
+
+“Moderate every community from one dashboard.”
+
+3. PatentIQ 📄
+
+AI patent intelligence platform
+
+semantic patent search
+summarization
+prior-art analysis
+embeddings/vector search
+trend insights
+researcher/startup focused
+
+Repo:
+
+github.com/dialabs/patent-iq
+
+Core positioning:
+
+“Understand patents in minutes, not days.”
+
+Team
+Dhruv Sen
+Itesh Singh Tomar
+Aditya Kumar Anupam

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import { ThemeInitializer } from "./components/ThemeInitializer";
 import { cn } from "@/lib/utils";
 
 const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
@@ -29,9 +30,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "scroll-smooth", geistSans.variable, geistMono.variable, "font-sans", figtree.variable)}
+      className={cn("antialiased", "scroll-smooth", geistSans.variable, geistMono.variable, "font-sans", figtree.variable)}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-black text-white">
+      <body className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
+        <ThemeInitializer />
         <Navbar />
         {children}
       </body>

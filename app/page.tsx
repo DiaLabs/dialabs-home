@@ -14,15 +14,15 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="relative flex-1 flex items-center justify-center pt-40 pb-20 px-6 overflow-hidden bg-black min-h-screen">
+      <section className="relative flex items-center justify-center pt-32 md:pt-40 pb-20 px-6 overflow-hidden bg-white dark:bg-black text-black dark:text-white min-h-screen\">
         {/* Meteors Background - Positioned absolutely */}
-        <div className="absolute inset-0 z-0 w-full h-full">
-          <Meteors number={50} />
+        <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+          <Meteors />
         </div>
 
         {/* Decorative dotted border background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
-          <div className="absolute w-full max-w-4xl h-96 border border-dashed border-white/10" />
+          <div className="absolute w-full max-w-4xl h-96 border border-dashed border-black/10 dark:border-white/10" />
         </div>
 
         <div className="max-w-3xl w-full text-center relative z-[10]">
@@ -49,7 +49,7 @@ export default function Home() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <p className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
               We are a collective of ML students building open-source products
               that solve real world problems with AI, privacy and purpose.
             </p>
@@ -65,7 +65,7 @@ export default function Home() {
           >
             <Link
               href="#projects"
-              className="px-6 py-3 bg-white text-black font-medium text-center transition-all duration-300 hover:bg-gray-100 active:bg-gray-90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+              className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-medium text-center transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 active:bg-gray-900 dark:active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black"
             >
               Explore Our Projects
             </Link>
@@ -73,7 +73,7 @@ export default function Home() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 border border-white/30 text-white font-medium text-center transition-all duration-300 hover:bg-white/5 hover:border-white/60 active:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black flex items-center justify-center gap-2"
+              className="px-6 py-3 border-2 border-black dark:border-white/30 text-black dark:text-white font-medium text-center transition-all duration-300 hover:bg-black/5 dark:hover:bg-white/5 hover:border-black dark:hover:border-white/60 active:bg-black/10 dark:active:bg-white/10 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -94,19 +94,19 @@ export default function Home() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="flex items-center gap-2 text-gray-500">
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-500">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V9.5m-11-4h8m-8 3h5" stroke="currentColor" fill="none" strokeWidth="1.5" />
               </svg>
               Open Source
             </div>
-            <div className="flex items-center gap-2 text-gray-500">
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-500">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 6h2v5H9V6zm0 6h2v2H9v-2z" />
               </svg>
               ML Students
             </div>
-            <div className="flex items-center gap-2 text-gray-500">
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-500">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10.5 1.5L3 5.5v5c0 3.86 2.29 7.24 5.5 8.83 3.21-1.59 5.5-4.97 5.5-8.83v-5l-3-3.5z" />
               </svg>
