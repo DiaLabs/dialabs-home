@@ -15,53 +15,76 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
+
   return (
     <nav className="relative">
       <div className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center">
-        <div className="max-w-7xl w-full mx-auto px-3 md:px-6 py-2 md:py-4">
+        <div className="max-w-7xl w-full mx-auto px-6 pt-6 pb-2 md:pt-4 md:pb-4">
           <div className={`border-2 border-dashed border-black/20 dark:border-white/30 hover:border-black/40 dark:hover:border-white/60 transition-all duration-300 px-3 md:px-6 py-2 md:py-3 flex items-center justify-between gap-2 md:gap-0 ${
             scrolled ? "bg-white/95 dark:bg-black/95 backdrop-blur-xs" : ""
           }`}>
-          {/* Left Section - Logo */}
-          <Link href="/" className="text-lg md:text-xl font-semibold tracking-tight text-black dark:text-white hover:opacity-75 transition-opacity duration-200">
-            DiaLabs
-          </Link>
 
-          {/* Center Section - Navigation */}
-          <div className="hidden md:flex gap-6 lg:gap-12 flex-1 justify-center">
-            <Link
-              href="#who-we-are"
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-            >
-              Who We Are
-            </Link>
-            <Link
-              href="#what-we-do"
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-            >
-              What We Do
-            </Link>
-            <Link
-              href="#get-involved"
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-            >
-              Get Involved
+          {/* Left Action (Theme Toggle) - Mobile Only */}
+          <AnimatedThemeToggler
+            variant="square"
+            className="md:hidden hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 py-2 flex items-center justify-center text-black dark:text-white"
+          />
+
+          {/* Center Brand Logo - Centered on Mobile, Left-aligned on Desktop */}
+          <div className="flex-1 flex justify-center md:flex-initial md:justify-start">
+            <Link href="/" className="flex items-center text-lg md:text-xl font-semibold tracking-tight text-black dark:text-white hover:opacity-75 transition-opacity duration-200">
+              <img src="../icon0.svg" alt="DiaLabs Logo" className="w-8 h-8 mr-2 -translate-y-[2px] dark:invert" />
+              <span>DiaLabs</span>
             </Link>
           </div>
 
-          {/* Right Section - Theme Toggle & GitHub */}
-          <div className="flex items-center gap-2 md:gap-4">
-            {/* Animated Theme Toggle - Self Contained */}
-            <div className="hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 md:px-4 py-2 md:py-3 flex items-center justify-center">
-              <AnimatedThemeToggler variant="square" className="w-5 h-5" />
-            </div>
+          {/* Center Navigation Links - Desktop Only */}
+          <div className="hidden md:flex gap-6 lg:gap-12 flex-1 justify-center">
+            <a
+              href="#what-we-do"
+              onClick={(e) => handleScroll(e, "what-we-do")}
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              What We Do
+            </a>
+            <a
+              href="#who-we-are"
+              onClick={(e) => handleScroll(e, "who-we-are")}
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              Who We Are
+            </a>
+            <a
+              href="#get-involved"
+              onClick={(e) => handleScroll(e, "get-involved")}
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer"
+            >
+              Get Involved
+            </a>
+          </div>
 
-            {/* GitHub Link - Self Contained */}
+          {/* Right Actions (Theme Toggle & GitHub) - Desktop: Both, Mobile: GitHub Icon Only */}
+          <div className="flex items-center gap-2 md:gap-4 justify-end">
+            {/* Desktop Theme Toggle */}
+            <AnimatedThemeToggler
+              variant="square"
+              className="hidden md:flex hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 md:px-4 py-2 md:py-3 items-center justify-center text-black dark:text-white"
+            />
+
+            {/* GitHub Link */}
             <a
               href="https://github.com/dialabs"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 md:px-4 py-2 md:py-3 text-black dark:text-white flex items-center gap-2 text-xs md:text-sm"
+              className="hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 px-2 md:px-4 py-2 md:py-3 text-black dark:text-white flex items-center gap-1 md:gap-2 text-xs md:text-sm"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -71,12 +94,12 @@ export default function Navbar() {
                   clipRule="evenodd"
                 />
               </svg>
-              GitHub
+              <span className="hidden sm:inline">GitHub</span>
             </a>
           </div>
         </div>
-        </div>
       </div>
-    </nav>
+    </div>
+  </nav>
   );
 }
